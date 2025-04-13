@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.alibaba.nls'
+version '2.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 阿里云语音识别SDK
+    implementation 'com.alibaba.nls:nls-sdk-transcriber:2.2.1'
+    implementation 'com.alibaba.nls:nls-sdk-common:2.2.1'
+    
+    // FastJSON
+    implementation 'com.alibaba:fastjson:1.2.41'
+    
+    // Netty相关依赖
+    implementation 'io.netty:netty-transport:4.1.17.Final'
+    implementation 'io.netty:netty-resolver:4.1.17.Final'
+    implementation 'io.netty:netty-handler:4.1.17.Final'
+    implementation 'io.netty:netty-common:4.1.17.Final'
+    implementation 'io.netty:netty-codec-http:4.1.17.Final'
+    implementation 'io.netty:netty-codec:4.1.17.Final'
+    implementation 'io.netty:netty-buffer:4.1.17.Final'
+    
+    // OkHttp相关依赖
+    implementation 'com.squareup.okio:okio:1.13.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    
+    // 日志相关依赖
+    implementation 'ch.qos.logback:logback-classic:1.0.13'
+    implementation 'ch.qos.logback:logback-core:1.0.13'
+    implementation 'org.slf4j:slf4j-api:1.7.5'
+}
+
+application {
+    mainClass = 'com.alibaba.nls.client.SpeechTranscriberDemo'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.alibaba.nls.client.SpeechTranscriberDemo'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
