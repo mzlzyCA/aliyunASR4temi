@@ -1,0 +1,38 @@
+# Gradle 相关
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+.gradletasknamecache
+**/build/
+
+# IntelliJ IDEA / Android Studio 相关
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+out/
+
+# 编译输出
+bin/
+gen/
+classes/
+target/
+
+# 本地配置
+local.properties
+
+# 日志文件
+logs/
+*.log
+
+# 临时和辅助文件
+*_temp.txt
+.DS_Store
+Thumbs.db
+
+# 配置文件
+config.properties
+
