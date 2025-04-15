@@ -30,4 +30,8 @@ public class ConfigLoader {
     public static String getAccessKeySecret() {
         return properties.getProperty("aliyun.accessKeySecret", "");
     }    
+
+    public static String getAppKey() {
+        return properties.getProperty("temiASR.appKey", "");
+    }
 }

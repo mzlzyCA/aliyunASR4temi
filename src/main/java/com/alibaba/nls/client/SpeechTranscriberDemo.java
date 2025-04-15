@@ -164,10 +164,17 @@ public class SpeechTranscriberDemo {
 
     public static void main(String[] args) throws Exception {
 
-        String appKey = "mv0ryqLvvym2kWec";
-        String token = "001fc7f59e4c4f7e863127c612241001";
+        String appKey = ConfigLoader.getAppKey();
+        
+        // 创建TokenManager获取token
+        String accessKeyId = ConfigLoader.getAccessKeyId();
+        String accessKeySecret = ConfigLoader.getAccessKeySecret();
+        TokenManager tokenManager = new TokenManager(accessKeyId, accessKeySecret);
+        String token = tokenManager.getToken();
+        
         String url = "wss://nls-gateway.cn-shanghai.aliyuncs.com/ws/v1";
-//        client = new NlsClient("ws://nls-gateway-cn-shanghai-internal.aliyuncs.com/ws/v1", accessToken);
+
+        //        client = new NlsClient("ws://nls-gateway-cn-shanghai-internal.aliyuncs.com/ws/v1", accessToken);
 
 
         // if (args.length == 2) {
@@ -181,6 +188,7 @@ public class SpeechTranscriberDemo {
         //     System.err.println("run error, need params(url is optional): " + "<app-key> <token> [url]");
         //     System.exit(-1);
         // }
+
 
         // TODO 重要提示： 这里用一个本地文件来模拟发送实时流数据，实际使用时，用户可以从某处实时采集或接收语音流并发送到ASR服务端
 //        String filepath = "src/main/resources/nls-sample-16k.wav";
